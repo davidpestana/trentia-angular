@@ -1,0 +1,47 @@
+services:
+  frontend:
+    build:
+      context: ./builds/angular
+    command: ["npm", "start"]
+    working_dir: /app
+    env_file: ./locals/.env
+    ports:
+      - 4200:4200
+    volumes:
+      - ./src/frontend:/app
+
+  # admin_panel:
+  #   build:
+  #     context: ./builds/angular_legacy
+  #   command: [ejecutar /app]
+  #   working_dir: /app
+  #   volumes:
+  #     - ./src/admin_panel:/app
+
+  # backend:
+  #   build: 
+  #     context: ./builds/nestjs
+  #   command: [ejecutar /app]
+  #   working_dir: /app
+  #   volumes:
+  #     - ./src/backend:/app
+
+
+  # microservicio_dotnet:
+  #   build:
+  #     context: ./builds/dotnet
+  #   command: [dotnet -s miapp]
+  #   working_dir: /app
+  #   depends_on:
+  #     - bbdd
+  #   volumes:
+  #     - ./src/microservicio_dotnet:/app
+
+  # bbdd:
+  #   build:
+  #     context: ./builds/sql_server
+  #   environment:
+  #     - ACCEPT_EULA=Y
+  #     - MSSQL_SA_PASSWORD=123_hola
+  #   ports:
+  #     - 1433:1433

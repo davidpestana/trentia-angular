@@ -1,0 +1,45 @@
+services:
+  angular:
+    build:
+      context: ./builds/angular
+    command: [bash]
+    working_dir: /app
+    volumes:
+      - ./src:/app
+  angular_legacy:
+    build:
+      context: ./builds/angular_legacy
+    command: [bash]
+    working_dir: /app
+    volumes:
+      - ./src:/app
+  nestjs:
+    build:
+      context: ./builds/nestjs
+    command: [bash]
+    working_dir: /app
+    volumes:
+      - ./src:/app
+  dotnet:
+    build:
+      context: ./builds/dotnet
+    volumes:
+      - ./src:/app
+
+  sql_server:
+    build:
+      context: ./builds/sql_server
+    command: [bash]
+    working_dir: /app
+    volumes:
+      - ./src:/app
+      - ./fixtures:/fixtures
+
+  tools:
+    build:
+      context: ./builds/tools
+    command: [bash]
+    working_dir: /app
+    volumes:
+      - ./src:/app
+      - ./fixtures:/fixtures
